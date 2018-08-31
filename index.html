@@ -1,384 +1,144 @@
-<!DOCTYPE html>
-<html>
+﻿ <!-- FlatFy Theme - Andrea Galanti /-->
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!-->
+ <html xmlns="http://www.w3.org/1999/html"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
-    <meta name="google" value="notranslate">
-    <title>Blockly Demo:</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/blockly_compressed.js"></script>
-    <script src="js/blocks_compressed.js"></script>
-    <script src="js/javascript_compressed.js"></script>
-    <script src="js/python_compressed.js"></script>
-    <script src="js/php_compressed.js"></script>
-    <script src="js/lua_compressed.js"></script>
-    <script src="js/dart_compressed.js"></script>
-    <!-- <script src="js/category-zh-hans.js"></script> -->
-	<!-- <script src="js/blocks-zh-hans.js"></script> -->
-	<script src="js/code.js"></script>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="谷歌可视化编程工具集">
+    <meta name="author" content="neco">
+
+    <title>谷歌可视化编程工具集</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min_1.css" rel="stylesheet">
+ 
+    <!-- Custom Google Web Font -->
+    <link href="css/font-awesome.min_1.css" rel="stylesheet">
+	<!--
+    <link href='http://fonts.useso.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.useso.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
+	-->
+    <!-- Custom CSS-->
+    <link href="css/general_1.css" rel="stylesheet">
+	
+	 <!-- Owl-Carousel -->
+    <link href="css/custom_1.css" rel="stylesheet">
+	<link href="css/owl.carousel_1.css" rel="stylesheet">
+    <link href="css/owl.theme_1.css" rel="stylesheet">
+	<link href="css/style_1.css" rel="stylesheet">
+	<link href="css/animate_1.css" rel="stylesheet">
+	
+	<!-- Magnific Popup core CSS file -->
+	<link rel="stylesheet" href="css/magnific-popup_1.css"> 
+	
+	<script src="js/modernizr-2.6.2.min.js"></script>  <!-- Modernizr /-->
+	<script src="js/pie_ie9.js"></script>  
+	<script src="js/pie_ie678.js"></script>  
+	
+	<!--[if lt IE 9]>
+		<script src="js/html5shiv.js"></script>
+	<![endif]-->
+
 </head>
-<body>
-<table width="100%" height="100%">
-    <tr>
-        <td>
-            <h1><a href="#">Blockly</a>&rlm; &gt;
-                <a href="#">Demos</a>&rlm; &gt;
-                <span id="title">...</span>
-            </h1>
-        </td>
-        <td class="farSide">
-            <select id="languageMenu"></select>
-        </td>
-    </tr>
-    <tr>
-        <td colspan=2>
-            <table width="100%">
-                <tr id="tabRow" height="1em">
-                    <td id="tab_blocks" class="tabon">...</td>
-                    <td class="tabmin">&nbsp;</td>
-                    <td id="tab_javascript" class="taboff">JavaScript</td>
-                    <td class="tabmin">&nbsp;</td>
-                    <td id="tab_python" class="taboff">Python</td>
-                    <td class="tabmin">&nbsp;</td>
-                    <td id="tab_php" class="taboff">PHP</td>
-                    <td class="tabmin">&nbsp;</td>
-                    <td id="tab_lua" class="taboff">Lua</td>
-                    <td class="tabmin">&nbsp;</td>
-                    <td id="tab_dart" class="taboff">Dart</td>
-                    <td class="tabmin">&nbsp;</td>
-                    <td id="tab_xml" class="taboff">XML</td>
-                    <td class="tabmax">
-                        <button id="trashButton" class="notext" title="...">
-                            <img src='media/1x1.gif' class="trash icon21">
-                        </button>
-                        <button id="linkButton" class="notext" title="...">
-                            <img src='media/1x1.gif' class="link icon21">
-                        </button>
-                        <button id="runButton" class="notext primary" title="...">
-                            <img src='media/1x1.gif' class="run icon21">
-                        </button>
-                    </td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-    <tr>
-        <td height="99%" colspan=2 id="content_area">
-        </td>
-    </tr>
-</table>
-<div id="content_blocks" class="content"></div>
-<pre id="content_javascript" class="content"></pre>
-<pre id="content_python" class="content"></pre>
-<pre id="content_php" class="content"></pre>
-<pre id="content_lua" class="content"></pre>
-<pre id="content_dart" class="content"></pre>
-<textarea id="content_xml" class="content" wrap="off"></textarea>
 
-<xml id="toolbox" style="display: none">
-    <category name="%{BKY_CATLOGIC}" colour="%{BKY_LOGIC_HUE}">
-        <block type="controls_if"></block>
-        <block type="logic_compare"></block>
-        <block type="logic_operation"></block>
-        <block type="logic_negate"></block>
-        <block type="logic_boolean"></block>
-        <block type="logic_null"></block>
-        <block type="logic_ternary"></block>
-    </category>
-    <category name="%{BKY_CATLOOPS}" colour="%{BKY_LOOPS_HUE}">
-        <block type="controls_repeat_ext">
-            <value name="TIMES">
-                <shadow type="math_number">
-                    <field name="NUM">10</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="controls_whileUntil"></block>
-        <block type="controls_for">
-            <value name="FROM">
-                <shadow type="math_number">
-                    <field name="NUM">1</field>
-                </shadow>
-            </value>
-            <value name="TO">
-                <shadow type="math_number">
-                    <field name="NUM">10</field>
-                </shadow>
-            </value>
-            <value name="BY">
-                <shadow type="math_number">
-                    <field name="NUM">1</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="controls_forEach"></block>
-        <block type="controls_flow_statements"></block>
-    </category>
-    <category name="%{BKY_CATMATH}" colour="%{BKY_MATH_HUE}">
-        <block type="math_number"></block>
-        <block type="math_arithmetic">
-            <value name="A">
-                <shadow type="math_number">
-                    <field name="NUM">1</field>
-                </shadow>
-            </value>
-            <value name="B">
-                <shadow type="math_number">
-                    <field name="NUM">1</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="math_single">
-            <value name="NUM">
-                <shadow type="math_number">
-                    <field name="NUM">9</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="math_trig">
-            <value name="NUM">
-                <shadow type="math_number">
-                    <field name="NUM">45</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="math_constant"></block>
-        <block type="math_number_property">
-            <value name="NUMBER_TO_CHECK">
-                <shadow type="math_number">
-                    <field name="NUM">0</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="math_round">
-            <value name="NUM">
-                <shadow type="math_number">
-                    <field name="NUM">3.1</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="math_on_list"></block>
-        <block type="math_modulo">
-            <value name="DIVIDEND">
-                <shadow type="math_number">
-                    <field name="NUM">64</field>
-                </shadow>
-            </value>
-            <value name="DIVISOR">
-                <shadow type="math_number">
-                    <field name="NUM">10</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="math_constrain">
-            <value name="VALUE">
-                <shadow type="math_number">
-                    <field name="NUM">50</field>
-                </shadow>
-            </value>
-            <value name="LOW">
-                <shadow type="math_number">
-                    <field name="NUM">1</field>
-                </shadow>
-            </value>
-            <value name="HIGH">
-                <shadow type="math_number">
-                    <field name="NUM">100</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="math_random_int">
-            <value name="FROM">
-                <shadow type="math_number">
-                    <field name="NUM">1</field>
-                </shadow>
-            </value>
-            <value name="TO">
-                <shadow type="math_number">
-                    <field name="NUM">100</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="math_random_float"></block>
-    </category>
-    <category name="%{BKY_CATTEXT}" colour="%{BKY_TEXTS_HUE}">
-        <block type="text"></block>
-        <block type="text_join"></block>
-        <block type="text_append">
-            <value name="TEXT">
-                <shadow type="text"></shadow>
-            </value>
-        </block>
-        <block type="text_length">
-            <value name="VALUE">
-                <shadow type="text">
-                    <field name="TEXT">abc</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="text_isEmpty">
-            <value name="VALUE">
-                <shadow type="text">
-                    <field name="TEXT"></field>
-                </shadow>
-            </value>
-        </block>
-        <block type="text_indexOf">
-            <value name="VALUE">
-                <block type="variables_get">
-                    <field name="VAR">{textVariable}</field>
-                </block>
-            </value>
-            <value name="FIND">
-                <shadow type="text">
-                    <field name="TEXT">abc</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="text_charAt">
-            <value name="VALUE">
-                <block type="variables_get">
-                    <field name="VAR">{textVariable}</field>
-                </block>
-            </value>
-        </block>
-        <block type="text_getSubstring">
-            <value name="STRING">
-                <block type="variables_get">
-                    <field name="VAR">{textVariable}</field>
-                </block>
-            </value>
-        </block>
-        <block type="text_changeCase">
-            <value name="TEXT">
-                <shadow type="text">
-                    <field name="TEXT">abc</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="text_trim">
-            <value name="TEXT">
-                <shadow type="text">
-                    <field name="TEXT">abc</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="text_print">
-            <value name="TEXT">
-                <shadow type="text">
-                    <field name="TEXT">abc</field>
-                </shadow>
-            </value>
-        </block>
+<body id="home">
 
-        <block type="print_me">
-            <value name="print_test">
-                <shadow type="text">
-                    <field name="TEXT">abcd</field>
-                </shadow>
-            </value>
-        </block>
+	<!-- Preloader -->
+	<div id="preloader">
+		<div id="status"></div>
+	</div>
+	
 
-        <block type="text_prompt_ext">
-            <value name="TEXT">
-                <shadow type="text">
-                    <field name="TEXT">abc</field>
-                </shadow>
-            </value>
-        </block>
-    </category>
-    <category name="%{BKY_CATLISTS}" colour="%{BKY_LISTS_HUE}">
-        <block type="lists_create_with">
-            <mutation items="0"></mutation>
-        </block>
-        <block type="lists_create_with"></block>
-        <block type="lists_repeat">
-            <value name="NUM">
-                <shadow type="math_number">
-                    <field name="NUM">5</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="lists_length"></block>
-        <block type="lists_isEmpty"></block>
-        <block type="lists_indexOf">
-            <value name="VALUE">
-                <block type="variables_get">
-                    <field name="VAR">{listVariable}</field>
-                </block>
-            </value>
-        </block>
-        <block type="lists_getIndex">
-            <value name="VALUE">
-                <block type="variables_get">
-                    <field name="VAR">{listVariable}</field>
-                </block>
-            </value>
-        </block>
-        <block type="lists_setIndex">
-            <value name="LIST">
-                <block type="variables_get">
-                    <field name="VAR">{listVariable}</field>
-                </block>
-            </value>
-        </block>
-        <block type="lists_getSublist">
-            <value name="LIST">
-                <block type="variables_get">
-                    <field name="VAR">{listVariable}</field>
-                </block>
-            </value>
-        </block>
-        <block type="lists_split">
-            <value name="DELIM">
-                <shadow type="text">
-                    <field name="TEXT">,</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="lists_sort"></block>
-    </category>
-    <category name="%{BKY_CATCOLOUR}" colour="%{BKY_COLOUR_HUE}">
-        <block type="colour_picker"></block>
-        <block type="colour_random"></block>
-        <block type="colour_rgb">
-            <value name="RED">
-                <shadow type="math_number">
-                    <field name="NUM">100</field>
-                </shadow>
-            </value>
-            <value name="GREEN">
-                <shadow type="math_number">
-                    <field name="NUM">50</field>
-                </shadow>
-            </value>
-            <value name="BLUE">
-                <shadow type="math_number">
-                    <field name="NUM">0</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="colour_blend">
-            <value name="COLOUR1">
-                <shadow type="colour_picker">
-                    <field name="COLOUR">#ff0000</field>
-                </shadow>
-            </value>
-            <value name="COLOUR2">
-                <shadow type="colour_picker">
-                    <field name="COLOUR">#3333ff</field>
-                </shadow>
-            </value>
-            <value name="RATIO">
-                <shadow type="math_number">
-                    <field name="NUM">0.5</field>
-                </shadow>
-            </value>
-        </block>
-    </category>
-    <sep></sep>
-    <category name="%{BKY_CATVARIABLES}" colour="%{BKY_VARIABLES_HUE}" custom="VARIABLE"></category>
-    <category name="%{BKY_CATFUNCTIONS}" colour="%{BKY_PROCEDURES_HUE}" custom="PROCEDURE"></category>
-</xml>
+	
 
+	<nav class="navbar-default" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+					<span class="sr-only"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+
+		</div>
+	</nav> 
+
+	<div id="whatis" class="content-section-b" style="border-top: 0">
+		<div class="container">
+
+			<div class="col-md-6 col-md-offset-3 text-center wrap_title">
+			<h2 class="h4_home wow fadeIn" data-wow-delay="0.6s">Google</h2>
+				<h2 class="h3_home wow fadeIn" data-wow-delay="0.4s">可视化编程工具集</h2>
+				
+			</div>
+			<br><br><br>
+			<br class="row">
+			
+				<div class="col-sm-4 wow fadeInDown text-center">
+					<a  href="http://app.gzjkw.net">
+						<img class="rotate" src="picture/heart.svg" alt="App Inventor image">
+					    <h3>App Inventor</h3> 
+                        <p class="lead"> 开始创作 </p>
+                  
+					</a>
+
+
+				</div><!-- /.col-lg-4 -->
+				
+				<div class="col-sm-4 wow fadeInDown text-center">
+					<a  href="blockly/index.html?lang=zh-hans">
+				  		<img  class="rotate" src="picture/picture.svg" alt="Generic placeholder image">
+						<h3>Blockly</h3>
+                        <p class="lead"> 开始创作 </p>
+                        
+					</a>
+				</div><!-- /.col-lg-4 -->
+				
+				<div class="col-sm-4 wow fadeInDown text-center">
+					<a  href="scratch/index.html">
+				  		<img  class="rotate" src="picture/stopwatch.svg" alt="Generic placeholder image">
+				   		<h3>Scratch Blocks</h3>
+				   		<p class="lead"> 开始创作 </p>
+                        
+					</a>
+				</div><!-- /.col-sm-4 -->
+
+			</div><!-- /.row -->
+				
+
+    <footer>
+      <div class="container">
+        <div class="row">
+			<div class="col-sm-1"></div>
+			<div class="col-sm-10">
+			<p></p><p></p>
+				<h4>由于部分谷歌可视化编程工具访问不便，故搭建此网页方便大家学习与使用。</h4>
+			</div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.js"></script>
+	<script src="js/owl.carousel.js"></script>
+	<script src="js/script.js"></script>
+	<!-- StikyMenu -->
+	<script src="js/stickup.min.js"></script>
+	<!-- Smoothscroll -->
+	<script type="text/javascript" src="js/jquery.corner.js"></script> 
+	<script src="js/wow.min.js"></script>
+	<script src="js/classie.js"></script>
+	<script src="js/uimorphingbutton_inflow.js"></script>
+	<!-- Magnific Popup core JS file -->
+	<script src="js/jquery.magnific-popup.js"></script> 
 </body>
+
 </html>
