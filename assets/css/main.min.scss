@@ -1,0 +1,79 @@
+---
+---
+*{
+    border-radius: 0 !important;
+}
+body{
+    background: url('/assets/images/background.png') no-repeat;
+    background-size: cover;
+}
+.btn-icon{
+    border-radius: 50% !important;
+    height: 32px;
+    width: 32px;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: baseline;
+}
+.panel {
+    background-color: #FFFFFF;
+    .panel-top {
+        h5{
+            margin: 0;
+            padding: 10px 20px;
+            color: #0eabae;
+            display: inline-block;
+        }
+        .expandableBtn{
+            color: #fff;
+            margin-right: 10px;
+        }
+    }
+    .panel-heading {
+        background-color: #FFFFFF;
+        .post-meta{
+            .label,.label>a{
+                color: #060000;
+                cursor: pointer;
+                text-transform: uppercase;
+                font-weight: 500;
+            }
+        }
+    }
+    .panel-body,.panel-footer{
+        background-color: #FFFFFF;
+        #section{
+            display: inline-block;
+            padding: 5px;
+            font-size: 24px;
+            color: #000;
+        }
+    }
+    .panel-footer{
+        min-height: 54px;
+        .btn{
+            outline: none;
+            border: none;
+            background: transparent;
+            color: #7f7f7f;
+        }
+    }
+}
+#main{
+    overflow: hidden;
+}
+
+@import "syntax-highlighting";
+@import "articles";
+
+@import "footer";
+@import "sidebar";
+@import "navbar";
+@import "article";
+@import "page";
+@import "categories";
+@import "gallery";
+@import "index";

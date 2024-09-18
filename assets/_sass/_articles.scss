@@ -1,0 +1,44 @@
+#articles{
+    .panel{
+        margin-bottom: 20px;
+        border-top: 3px solid #0eabae;
+        .panel-heading{
+            padding: 20px 10px 10px 0px;
+            border-bottom: double #e6e6e6;
+            margin-left: 20px;
+            margin-right: 20px;
+            .panel-title{
+                font-size: 26px;
+                padding-left: 0;
+                a{
+                    text-decoration: none;
+                }
+            }
+            .post-meta{
+                margin-top: 10px;
+                span{
+                    font-size: 13px;
+                    margin: 15px 10px 0 0;
+                    color: #b6b6b6;
+                    a{
+                        color: #b6b6b6;
+                    }
+                    i{
+                        color: #ffb80d;
+                    }
+                }
+            }
+        }
+        .panel-body{
+            p{
+                font-size: 16px;
+                padding: 0 5px;
+                color: #7f7f7f;
+            }
+            img{
+                max-width: 90%;
+                box-shadow: 2px 2px 3px #424242;
+            }
+        }
+    }
+}

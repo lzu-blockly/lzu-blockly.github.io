@@ -1,0 +1,38 @@
+#gallery{
+    overflow: hidden;
+    margin-bottom: 10px;
+    .col-md-12{
+        height: 30px;
+        button{
+            padding: 3px 12px;
+        }
+    }
+    #thumbs{
+        overflow:hidden;
+        height: 190px;
+        ul{
+            list-style: none;
+            padding: 10px 0 0 0;
+            display:flex;
+            flex: 1;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            li{
+                margin-bottom: 10px;
+                img{
+                    display: inline-block;
+                    width: 130px;
+                    height: 170px;
+                    padding: 4px;
+                    line-height: 1.42857143;
+                    background-color: #fff;
+                    border: 1px solid #ddd;
+                    -webkit-transition: all .2s ease-in-out;
+                    -o-transition: all .2s ease-in-out;
+                    transition: all .2s ease-in-out;
+                    box-shadow: 1px 1px 1px #424242;
+                }
+            }
+        }
+    }
+}
